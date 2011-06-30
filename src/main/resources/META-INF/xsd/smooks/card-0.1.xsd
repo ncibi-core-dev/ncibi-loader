@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.milyn.org/xsd/smooks/card-0.1.xsd"
+           elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:smooks="http://www.milyn.org/xsd/smooks-1.1.xsd"
+           xmlns:smooks-card="http://www.milyn.org/xsd/smooks/card-0.1.xsd">
+
+    <xs:import namespace="http://www.milyn.org/xsd/smooks-1.1.xsd"/>
+
+    <xs:annotation>
+        <xs:documentation xml:lang="en">Smooks Card Reader Configuration</xs:documentation>
+    </xs:annotation>
+
+    <xs:element name="reader" type="smooks-card:reader" substitutionGroup="smooks:abstract-reader">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Card Reader Configuration
+                The Card reader reads and validates a Card stream and converts it to
+                SAX events that Smooks can process.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="reader">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Card Reader</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="smooks:abstract-reader">
+                <xs:attribute name="tagmap" type="xs:string">
+                </xs:attribute>
+                <xs:attribute name="separator" type="smooks-card:char"
+                        use="optional" default="&#xA;">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            Field separator on multi-line value fields. Defaults to newline.
+                       </xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:simpleType name="char">
+        <xs:restriction base="xs:string">
+            <xs:length value="1"></xs:length>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

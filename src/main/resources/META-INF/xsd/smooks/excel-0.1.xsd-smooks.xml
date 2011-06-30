@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<smooks-resource-list 
+    xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" 
+    default-selector-namespace="http://www.milyn.org/xsd/smooks/excel-0.1.xsd">
+
+    <resource-config selector="reader">
+        <resource>org.milyn.cdr.extension.NewResourceConfig</resource>
+        <param name="resource">org.ncibi.commons.smooks.reader.excel.ExcelReader</param>
+    </resource-config>
+
+    <resource-config selector="reader">
+        <resource>org.milyn.cdr.extension.SetOnResourceConfig</resource>
+        <param name="setOn">selector</param>
+        <param name="value">org.xml.sax.driver</param>
+    </resource-config>
+
+    <resource-config select="reader">
+        <resource>org.milyn.cdr.extension.MapToResourceConfigFromAttribute</resource>
+        <param name="attribute">fields</param>
+    </resource-config>
+
+    <resource-config select="reader">
+        <resource>org.milyn.cdr.extension.MapToResourceConfigFromAttribute</resource>
+        <param name="attribute">fields</param>
+    </resource-config>
+
+    <resource-config select="reader">
+        <resource>org.milyn.cdr.extension.MapToResourceConfigFromAttribute</resource>
+        <param name="attribute">fields</param>
+    </resource-config>
+
+</smooks-resource-list>

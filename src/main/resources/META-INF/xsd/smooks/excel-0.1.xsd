@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.milyn.org/xsd/smooks/excel-0.1.xsd"
+           elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:smooks="http://www.milyn.org/xsd/smooks-1.1.xsd"
+           xmlns:excel="http://www.milyn.org/xsd/smooks/excel-0.1.xsd">
+
+    <xs:import namespace="http://www.milyn.org/xsd/smooks-1.1.xsd"/>
+
+    <xs:annotation>
+        <xs:documentation xml:lang="en">Smooks Excel Reader Configuration</xs:documentation>
+    </xs:annotation>
+
+    <xs:element name="reader" type="excel:reader" substitutionGroup="smooks:abstract-reader">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Excel Reader Configuration
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="reader">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Excel Reader</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="smooks:abstract-reader">
+                <xs:attribute name="fields" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            Comma separated list of column record field names.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="skipLines" type="xs:integer" use="optional" default="0">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            Number of rows to skip before processing starts. Defaults to 0.
+                       </xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="worksheet" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            The worksheet to process in the excel file.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+</xs:schema>
